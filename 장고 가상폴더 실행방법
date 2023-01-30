@@ -1,0 +1,6 @@
+PS C:\Users\dnjsw\PycharmProjects\djangotest> python -m venv "djangotest"    #가상환경 폴더 만들기
+PS C:\Users\dnjsw\PycharmProjects\djangotest> cd djangotest                  #만든 폴더 경로 찾아가야함
+PS C:\Users\dnjsw\PycharmProjects\djangotest\djangotest> cd Scripts          # cd djangotest/Scripts 이런 느낌으로 하면됨
+PS C:\Users\dnjsw\PycharmProjects\djangotest\djangotest\Scripts> activate.bat  #가상환경 실행하는거임
+                                                                                #deactivate.bat 하면 실행취소
+                                                                                

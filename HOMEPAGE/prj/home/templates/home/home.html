@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+    <!-- Bootstrap CSS -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+        crossorigin="anonymous">
+
+    <!-- jquery 사용하기 위해 -->
+    <script
+        src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="intro">
+        <div class="header">
+            <ul class="nav">
+                <li><a href="">HOME</a></li>
+                <li><a
+                        href="http://127.0.0.1:8000/check">CHECK</a>
+                </li>
+                <li><a
+                        href="http://127.0.0.1:8000/result">REQUEST</a>
+                </li>
+                <li><a
+                        href="http://127.0.0.1:8000/factor">FACTOR</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="text">
+        <h1>교통사고 과실비율 AI 서비스</h1>
+        <div>
+            <h1>
+                <hr
+                    style="border: solid 5px green; width: 100%;">
+            </h1>
+            </h1>
+        </div>
+        <h3>블랙박스 영상을 분석하여 AI가 판단한</h3>
+        <h3>과실비율을 제공합니다.</h3>
+        <h2>블랙 박스 영상을 선택하시오.
+            <div id="wrap">
+                <form method="post" id="form1"
+                    enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <p><input type="file" name="file1"
+                            id="file1"
+                            style=margin-top:10px></p>
+                    <p><input type="button" value="업로드"
+                            id="writeBtn"></p>
+                </form>
+            </div>
+        </h2>
+
+
+
+        <script>
+
+            $(function () {
+                $('#writeBtn').click(function () {
+                    $('#form1').attr('action', 'check/');
+                    $('#form1').submit();
+
+                })
+            })
+
+
+
+        </script>
+
+
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+
+
+        <!-- Option 1: Bootstrap Bundle with Popper -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+            crossorigin="anonymous"></script>
+</body>
+
+</html>

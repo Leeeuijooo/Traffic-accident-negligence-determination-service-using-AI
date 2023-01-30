@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ko">
+    <head>
+        <!-- {% load static %}
+        <link rel="stylesheet" href="{% static 'style.css' %}"> -->
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <div class="intro">
+            <div class="header">
+                <ul class="nav">
+                    <li><a href="#">HOME</a></li>
+                    <li><a href="#">REQUEST</a></li>
+                    <li><a href="#">RESULT</a></li>
+                    <li><a href="#">FACTOR</a></li>
+                </ul>
+            </div>    
+        </div>
+
+        <div class="main_1">
+            <h1>CASE REQUEST - 사고의뢰</h1>
+            <div><h1><hr style="border: solid 5px green; width: 100%;"></h1></div>
+            <div class="menu">
+                <ul class="book"> <h1>체크리스트</h1>
+                    <li>
+                        
+                        <div class="title_1"><img src="image/앞차.PNG">
+                        앞차
+                        </div>
+                        <div class="check_1">
+                            <p><label><input type="checkbox" name="nb[]" value="01"> 음주운전</label></p>
+                            <p><label><input type="checkbox" name="nb[]" value="02"> 제한 속도위반</label></p>
+                            <p><label><input type="checkbox" name="nb[]" value="03"> 운전 중 휴대폰 사용</label></p>
+                            <p><label><input type="checkbox" name="nb[]" value="04"> 무면허 운전</label></p>
+                            <p><label><input type="checkbox" name="nb[]" value="05"> 졸음운전</label></p>
+                            <p><label><input type="checkbox" name="nb[]" value="06"> 차선변경</label></p>
+                            <p><label><input type="checkbox" name="nb[]" value="07"> 해당사항 없음</label></p>
+                            <p><input type="submit" value="Submit"></p>
+                        </div>    
+                    </li>        
+                    <li>
+                        <div class="title_1"><img src="image/뒷차.PNG">
+                        뒷차
+                        </div>
+                        <div class="check_1">
+                            <p><label><input type="checkbox" name="nb[]" value="01"> 음주운전</label></p>
+                            <p><label><input type="checkbox" name="nb[]" value="02"> 제한 속도 위반</label></p>
+                            <p><label><input type="checkbox" name="nb[]" value="03"> 운전 중 휴대폰 사용</label></p>
+                            <p><label><input type="checkbox" name="nb[]" value="04"> 무면허 운전</label></p>
+                            <p><label><input type="checkbox" name="nb[]" value="05"> 졸음운전</label></p>
+                            <p><label><input type="checkbox" name="nb[]" value="06"> 차선변경</label></p>
+                            <p><label><input type="checkbox" name="nb[]" value="07"> 해당사항 없음</label></p>
+                            <p><input type="submit" value="Submit"></p>
+                        </div>    
+                    </li>
+                </ul>
+                <ul>
+                    <div class="chart">
+                        <canvas id="myChart"></canvas>
+                    </div>
+
+                    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+                    <script>
+                    const ctx = document.getElementById('myChart').getContext('2d');
+                    const myChart = new Chart(ctx, {
+                        type: 'pie',
+                        data: {
+                            labels: ['앞차', '뒷차'],
+                            datasets: [{
+                                label: '# of Votes',
+                                data: [40, 60],
+                                backgroundColor: ['red', 'blue'],
+                                borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)'],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                    });
+                    </script>
+
+                </ul>
+            </div>
+            
+        </div>
+    </body>
+</html>

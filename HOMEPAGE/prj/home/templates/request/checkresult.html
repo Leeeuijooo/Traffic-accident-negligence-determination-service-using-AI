@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+    <!-- Bootstrap CSS -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+        crossorigin="anonymous">
+
+
+    <!-- jquery 사용하기 위해 -->
+    <script
+        src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- chart.js-->
+    <script
+        src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+</head>
+
+<body>
+    <div class="intro">
+        <div class="header">
+            <ul class="nav">
+                <li><a
+                        href="http://127.0.0.1:8000/home">HOME</a>
+                </li>
+                <li><a href="http://127.0.0.1:8000/check">CHECK</a></li>
+                <li><a href="">REQUEST</a></li>
+                <li><a
+                        href="http://127.0.0.1:8000/factor">FACTOR</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="main_1">
+        <h1>CASE REQUEST - 사고의뢰</h1>
+        <div>
+            <h1>
+                <hr
+                    style="border: solid 5px green; width: 100%;">
+            </h1>
+        </div>
+        <div class="menu">
+
+            <form method="post" id=checklist>
+                {% csrf_token %}
+                <ul class="book">
+                    <div class="subtitle">
+                        <h1>체크리스트</h1>
+                    </div>
+
+                    <li>
+                        <div class="title_1"><img
+                                src="../../static/image/앞차.PNG">
+                            앞차
+                        </div>
+                        <div class="check_1">
+                            <p><label><input type="checkbox"
+                                        id="case1"
+                                        value="10">
+                                    음주운전</label></p>
+                            <p><label><input type="checkbox"
+                                        id="case1"
+                                        value="10"> 제한
+                                    속도위반</label></p>
+                            <p><label><input type="checkbox"
+                                        id="case1"
+                                        value="10"> 운전 중 휴대폰
+                                    사용</label></p>
+                            <p><label><input type="checkbox"
+                                        id="case1"
+                                        value="10"> 무면허
+                                    운전</label></p>
+                            <p><label><input type="checkbox"
+                                        id="case1"
+                                        value="10">
+                                    졸음운전</label></p>
+                            <p><label><input type="checkbox"
+                                        id="case1"
+                                        value="0">
+                                    차선변경</label></p>
+                            <p><label><input type="checkbox"
+                                        id="case1"
+                                        value="0"> 해당사항
+                                    없음</label></p>
+
+
+
+                        </div>
+                    </li>
+                    <li>
+                        <div class="title_1"><img
+                                src="../../static/image/뒷차.PNG">
+                            뒷차
+                        </div>
+                        <div class="check_1">
+                            <p><label><input type="checkbox"
+                                        id="case2"
+                                        value="10">
+                                    음주운전</label></p>
+                            <p><label><input type="checkbox"
+                                        id="case2"
+                                        value="10"> 제한 속도
+                                    위반</label></p>
+                            <p><label><input type="checkbox"
+                                        id="case2"
+                                        value="10"> 운전 중 휴대폰
+                                    사용</label></p>
+                            <p><label><input type="checkbox"
+                                        id="case2"
+                                        value="10"> 무면허
+                                    운전</label></p>
+                            <p><label><input type="checkbox"
+                                        id="case2"
+                                        value="10">
+                                    졸음운전</label></p>
+                            <p><label><input type="checkbox"
+                                        id="case2"
+                                        value="0">
+                                    차선변경</label></p>
+
+                            <p><label><input type="checkbox"
+                                        id="case2"
+                                        value="0"> 해당사항
+                                    없음</label></p>
+                            <p><input type="submit"
+                                    id="Submit"
+                                    value="다음 페이지">
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </form>
+
+            <ul style="width: 540px">
+
+                <div class="title">과실비율적용</div>
+                <div class="chartbox" id="chartbox">
+                    <canvas id="pie-chart">
+                    </canvas>
+                    <div class="percentbox" id="myfault">
+                    </div>
+                </div>
+
+        </div>
+
+        </ul>
+    </div>
+
+    </div>
+
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        Chart.defaults.font.size = 25;
+        var mycar = 30;
+        var anocar = 70;
+        var wei = 0
+
+
+
+        $(function () {
+
+            $('input[type=checkbox][id=case1]').change(function () {
+                $('#pie-chart').remove();
+                $('#chartbox').append('<canvas id="pie-chart" height="420px" width="420px" "margin=auto"></canvas>')
+                $('#myfault').remove()
+
+
+                if ($(this).is(':checked')) {
+                    wei = this.value
+                    wei *= 1
+                    mycar += wei
+                    anocar -= wei
+                   
+                    $('#chartbox').append('<div class="percentbox" id="myfault">' + mycar + ' : ' + anocar + '</div>')
+                    new Chart(document.getElementById("pie-chart"), {
+                        type: 'pie',
+                        data: {
+                            labels: ["내 과실", "상대방 과실"],
+                            datasets: [{
+                                label: "비율(percent)",
+                                backgroundColor: ["#eb6b56", "#ffb400"],
+                                data: [mycar, anocar]
+                            }]
+                        },
+
+                    })
+                }
+
+                else {
+                    wei = this.value
+                    wei *= 1
+                    mycar -= wei
+                    anocar += wei;
+
+                    $('#chartbox').append('<div class="percentbox" id="myfault">' + mycar + ' : ' + anocar + '</div>')
+                    new Chart(document.getElementById("pie-chart"), {
+                        type: 'pie',
+                        data: {
+                            labels: ["내 과실", "상대방 과실"],
+                            datasets: [{
+                                label: "비율(percent)",
+                                backgroundColor: ["#eb6b56", "#ffb400"],
+                                data: [mycar, anocar]
+                            }]
+                        }
+                    });
+                }
+            });
+        })
+
+        $(function () {
+
+            $('input[type=checkbox][id=case2]').change(function () {
+                $('#pie-chart').remove();
+                $('#chartbox').append('<canvas id="pie-chart" height="420px" width="420px"></canvas>')
+                $('#myfault').remove()
+                if ($(this).is(':checked')) {
+
+                    wei = this.value
+                    wei *= 1
+                    mycar -= wei
+                    anocar += wei
+
+                    $('#chartbox').append('<div class="percentbox" id="myfault">' + mycar + ' : ' + anocar + '</div>')
+                    new Chart(document.getElementById("pie-chart"), {
+                        type: 'pie',
+                        data: {
+                            labels: ["내 과실", "상대방 과실"],
+                            datasets: [{
+                                label: "비율(percent)",
+                                backgroundColor: ["#eb6b56", "#ffb400"],
+                                data: [mycar, anocar]
+                            }]
+                        }
+                    });
+                }
+                else {
+
+                    wei = this.value
+                    wei *= 1
+                    mycar += wei
+                    anocar -= wei;
+
+                    $('#chartbox').append('<div class="percentbox" id="myfault">' + mycar + ' : ' + anocar + '</div>')
+                    new Chart(document.getElementById("pie-chart"), {
+                        type: 'pie',
+                        data: {
+                            labels: ["내 과실", "상대방 과실"],
+                            datasets: [{
+                                label: "비율(percent)",
+                                backgroundColor: ["#eb6b56", "#ffb400"],
+                                data: [mycar, anocar]
+                            }]
+                        }
+                    });
+                }
+            });
+        })
+
+        $('#Submit').click(function () {
+            $('#checklist').attr('action', 'factor/');
+            $('#checklist').submit();
+        })
+    </script>
+</body>
+
+</html>

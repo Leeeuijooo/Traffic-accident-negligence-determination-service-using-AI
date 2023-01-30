@@ -1,0 +1,107 @@
+## vscode는 GPU 문제로 Colab에서 진행 예정
+
+
+# 비어있지 않은 디렉토리 삭제
+import shutil
+shutil.rmtree('/content/yolov5', ignore_errors=True)
+
+---------------
+
+# wandb 설치 
+%pip install -q wandb
+import wandb
+
+---------------
+
+%cd /content/yolov5/
+!pip install -r requirements.txt
+
+---------------
+
+# Roboflow에서 가져오기
+!pip install roboflow
+
+from roboflow import Roboflow
+rf = Roboflow(api_key="bvtGZgf0BX8qWOSTqsWm")
+project = rf.workspace("seoa").project("yolo_test-knu5c")
+dataset = project.version(3).download("yolov5")
+
+---------------
+
+%cd /content
+!git clone https://github.com/ultralytics/yolov5.git
+
+---------------
+
+%cat /content/yolov5/YOLO_TEST-3/data.yaml
+(경로 복사해서 새로 설정)
+
+---------------
+
+%cd /
+from glob import glob
+
+img_list = glob('/content/yolov5/YOLO_TEST-3/train/images/*.jpg')
+
+print(len(img_list))
+
+---------------
+
+
+from sklearn.model_selection import train_test_split
+
+train_img_list, val_img_list = train_test_split(img_list, test_size=0.2, random_state=2000)
+
+print(len(train_img_list), len(val_img_list))
+
+---------------
+
+
+with open('/content/yolov5/YOLO_TEST-3/train.txt', 'w') as f:
+  f.write('\n'.join(train_img_list) + '\n')
+
+with open('/content/yolov5/YOLO_TEST-3/val.txt', 'w') as f:
+  f.write('\n'.join(val_img_list) + '\n')
+
+
+---------------
+
+
+  import yaml
+
+with open('/content/yolov5/YOLO_TEST-3/data.yaml', 'r') as f:
+  data = yaml.safe_load(f)
+
+print(data)
+
+data['train'] = '/content/yolov5/YOLO_TEST-3/train.txt'
+data['val'] = '/content/yolov5/YOLO_TEST-3/val.txt'
+
+with open('/content/yolov5/YOLO_TEST-3/data.yaml', 'w') as f:
+  yaml.dump(data, f)
+
+print(data)
+
+---------------
+
+# 모델 생성
+%cd /content/yolov5/
+
+!python train.py --img 416 --batch 16 --epochs 50 --data /content/yolov5/YOLO_TEST-3/data.yaml --cfg ./models/yolov5s.yaml --weights yolov5s.pt --name gun_yolov5s_results
+
+---------------
+
+# 이미지 객체 인식
+from IPython.display import Image
+import os
+
+val_img_path = val_img_list[1]
+
+!python detect.py --weights /content/yolov5/runs/train/gun_yolov5s_results/weights/best.pt --img 416 --conf 0.5 --source "{val_img_path}"
+
+Image(os.path.join('/content/yolov5/YOLO_TEST-3', os.path.basename(val_img_path)))
+
+---------------
+
+# 동영상 객체 인식
+!python detect.py --source C:/Users/user/Downloads/123.mp4 -- weights /content/yolov5/runs/train/gun_yolov5s_results/weights/best.pt/content/yolov5/runs/train/gun_yolov5s_results/weights/best.pt

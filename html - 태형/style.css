@@ -1,0 +1,287 @@
+*{
+    list-style: none;
+    text-decoration: none;
+    border-collapse: collapse;
+    margin:0px;
+    padding:0px;
+    color:#000;
+}
+
+
+body{
+    background: white url("image/사이트\ 배경화면.png")
+    no-repeat;
+}
+
+.header{
+    width:1280px;
+    margin: auto;
+    height:86px;
+    text-align: center;
+}
+
+.nav{
+    display:flex;
+    line-height: 86px;
+    font-size: 150%;
+}
+
+.nav > li{
+    margin-left: 190px;
+}
+
+.nav > li > a{
+    color: white;
+}
+
+.text > h1,
+.text > h3,
+.text > h2{
+    color: white;
+    text-align: center;
+}
+
+.text > h1{
+    font-size: 300%;
+    margin: auto auto 30px auto;
+}
+
+.text > h3{
+    font-size: 150%;
+    margin: 20px auto auto auto;
+}
+
+.text > h2{
+    margin: 30px auto auto auto
+}
+
+.text > div{
+    width: 50%;
+    margin: auto;
+}
+
+.text{
+    width: 100%;
+    margin:200px auto 200px auto;
+    text-align:center;
+}
+
+.main_1 > h1{
+    text-align:center;
+    color: white;
+    margin:75px auto 50px auto;
+}
+
+.img{
+    width: 100px;
+}
+
+.menu{
+    width:1080px;
+    display: flex;
+    background-color: antiquewhite;
+    border-radius: 20px;
+    margin: auto;
+    height:600px;
+}
+
+.book {
+    width: 540px;
+}
+
+.book > h1{
+    text-align: center;
+    color: skyblue;
+    margin-top: 10px;
+}
+
+.book > li{
+    display: flex;
+    height: 230px;
+}
+
+.menu > .book > li{
+    flex:1;
+}
+
+.menu > ul:not(:last-child){
+    border-right:5px solid yellow;
+}
+
+.menu > li:not(:last-child){
+    border-right:5px solid yellow;
+}
+
+.title{
+    font-size: 150%;
+    text-align: center;
+    margin-top: 30px;
+    height: 60px;
+}
+
+.title > h5{
+    font-size: 130%;
+    color: white;
+}
+
+.title_1{
+    font-size: 150%;
+    text-align: center;
+    width: 270px;
+    height: 50px;
+    color: black;
+    margin-top: 40px;
+}
+
+.check{
+    font-size: 150%;
+    text-align:left;
+    height: 250px;
+}
+
+.check_1{
+    font-size: 130%;
+    text-align:left;
+    height: 250px;
+    margin-top: 20px;
+}
+
+
+
+.main_1 > div > h1{
+    width: 50%;
+    margin: auto auto 30px auto;
+}
+
+.main_2 > h1{
+    text-align:center;
+    color: white;
+    margin:75px auto 50px auto;
+}
+
+.main_2 > div > h1{
+    width: 50%;
+    margin: auto auto 30px auto;
+}
+
+.main_2 > h2{
+    text-align: center;
+    color: white;
+}
+
+.menu_1{
+    width: 1080px;
+    height: 600px;
+    margin: auto;
+    background-color: gray;
+    border-radius: 30px;
+}
+
+.menu_1 > li{
+    flex: 1;
+    height: 540px;
+    text-align: center;
+}
+
+.point {
+    font-weight: bold;
+    color:white;
+    font-size: 200%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.menu_1 > li > .point{
+    margin:10px auto 10px auto;
+}
+
+.menu_1 > li > .progress-bar2{
+    margin-top: 20px;
+}
+
+
+.progress-bar2 {
+    width: 70%;
+    height: 100px;
+    background: linear-gradient(to right, blue 72%, red 72% 100%);
+    font-weight: 600;
+    font-size: .8rem;
+    margin: auto;
+  }
+
+ .result{
+    width: 960px;
+    height: 240px;
+    margin: auto;
+    background-color: white;
+    border-radius: 20px;
+    margin-top:30px;
+ }
+
+ .result_2{
+    width: 960px;
+    height: 360px;
+    margin: auto;
+    background-color: white;
+    border-radius: 20px;
+    margin-top:30px;
+ }
+
+ .point_1 {
+    font-weight: bold;
+    color:black;
+    font-size: 200%;
+    text-align: center;
+}
+
+.point_2 {
+    font-weight: bold;
+    color:black;
+    font-size: 150%;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.menu_2{
+    width:1080px;
+    height: 720px;
+    background-color: gray;
+    border-radius: 30px;
+    margin: auto;
+}
+
+.menu_2 > li{
+    display: flex;
+    flex:1;
+}
+
+
+.point_3 {
+    color:white;
+    font-size: 150%;
+    text-align: center;
+    margin-top:30px;
+}
+
+.result_1{
+    width: 300px;
+    height: 75px;
+    margin: auto;
+    background-color: skyblue;
+    border-radius: 20px;
+    margin-top:30px;
+    text-align: center;
+    font-size: 150%;
+ }
+
+ .result > div > a{
+    margin-top:20px;
+ }
+ 
+ .chart{
+    width: 360px;
+    height: 360px;
+    margin-top: 10px;
+    margin-left: 90px;
+ }
+ 

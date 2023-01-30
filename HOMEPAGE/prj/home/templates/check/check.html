@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}"> 
+
+         <!-- Bootstrap CSS -->
+    <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+    crossorigin="anonymous">
+
+    <!-- jquery 사용하기 위해 -->
+    <script
+    src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+       
+    <body>
+        <div class="intro">
+            <div class="header">
+                <ul class="nav">
+                    <li><a href="http://127.0.0.1:8000/">HOME</a></li>
+                    <li><a href="">CHECK</a></li>
+                    <li><a href="http://127.0.0.1:8000/result">RESULT</a></li>
+                    <li><a href="http://127.0.0.1:8000/factor">FACTOR</a></li>
+                </ul>
+            </div>    
+        </div>
+
+        <div class="main_1">
+            <h1>CASE REQUEST - 사고의뢰
+            <div>
+                <h1>
+                    <div><hr style="border: solid 5px green; width: 575px; margin-inline: auto;"></div>
+                </h1>
+            </h1>
+
+            </div>
+            
+        
+            <div class="menu">
+                <div class="book"> 
+                    <form method="post" id="form" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div style="margin-bottom: 30px">
+                        <h1 class="checktitle">CHECK LIST</h1>
+                    </div>
+                    <p class="Paragraph"> 선택사항입니다. 해당되는 경우에만 체크해주시고<p>
+                    <p class="Paragraph">해당되지 않는 경우에는 다음 버튼을 눌러주세요<p>
+                    <div class="check_1">
+                        <p class=input_check_left><input type="checkbox" style="zoom:2.0;" name="chk[]" id='check1'> 내차 좌회전</p>
+                        <p class=input_check_left><input type="checkbox" style="zoom:2.0;" name="chk[]" id="check2"> 내차 차선변경</p>
+                         
+                    </div>   
+                    <div class="check_2">
+                        <p class=input_check_right><input type="checkbox" style="zoom:2.0;" name="chk[]" id="check3"> 내차 우회전</p>
+                        <p class=input_check_right><input type="checkbox" style="zoom:2.0;" name="chk[]" id="check4"> 상대방차 차선변경</p>
+                         
+                    </div>   
+                    <input type="submit" id="fcl" value="다음" style="zoom:2.0;"> 
+                </form>
+
+                </div>
+            </div>
+                                                                
+        </div>
+
+        <script>
+         
+            $('#check1').change(function () {
+                if ($('#check1').is(':checked')) {
+                    $('#check1').val("100");
+                }
+                else if ($('#check1').is('checked', !checked)) {
+                    $('#check1').val("");
+                }
+            })
+
+            $('#check2').change(function () {
+                if ($('#check2').is(':checked')) {
+                    $('#check2').val('200');
+                }
+                else if ($('#check2').is('checked', !checked)) {
+                    ('#check2').val('');
+                }
+            })
+
+            $('#check3').change(function () {
+                if ($('#check3').is(':checked')) {
+                    $('#check3').val('300');
+                }
+                else if ($('#check3').is('checked', !checked)) {
+                    $('#check3').val('');
+                }
+            })
+
+            $('#check4').change(function () {
+                if ($('#check4').is(':checked')) {
+                    $('#check4').val('400');
+                }
+                else if ($('#check4').is('checked', !checked)) {
+                    $('#check4').val('');
+                }
+            })
+
+
+            $(function () {
+                $('#fcl').click(function () {
+                    $('#form').attr('action', 'result/');
+                    $('#form').submit();
+                    alert("객체탐지중입니다. 5분정도 걸릴거같아요! 확인 눌러주세요~");
+                })
+            })
+        
+            </script
+    </body>
+</html>

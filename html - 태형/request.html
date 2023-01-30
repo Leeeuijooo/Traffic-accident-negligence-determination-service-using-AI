@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ko">
+    <head>
+        <!-- {% load static %}
+        <link rel="stylesheet" href="{% static 'style.css' %}"> -->
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <div class="intro">
+            <div class="header">
+                <ul class="nav">
+                    <li><a href="#">HOME</a></li>
+                    <li><a href="#">REQUEST</a></li>
+                    <li><a href="#">RESULT</a></li>
+                    <li><a href="#">FACTOR</a></li>
+                </ul>
+            </div>    
+        </div>
+
+        <div class="main_1">
+            <h1>CASE REQUEST - 사고의뢰</h1>
+            <div><h1><hr style="border: solid 5px green; width: 100%;"></h1></div>
+            <ul class="menu">
+                <li>
+                    <div class="title">
+                        <h5>앞차에 해당하는 항목을 체크해주세요</h5>
+                    </div>
+                    <div class="check">
+                        <p><label><input type="checkbox" name="nb[]" value="01"> 과속</label></p>
+                        <p><label><input type="checkbox" name="nb[]" value="02"> 졸음운전</label></p>
+                        <p><label><input type="checkbox" name="nb[]" value="03"> 무면허운전</label></p>
+                        <p><label><input type="checkbox" name="nb[]" value="04"> 급정거</label></p>
+                        <p><label><input type="checkbox" name="nb[]" value="05"> 차선위반</label></p>
+                        <p><label><input type="checkbox" name="nb[]" value="03"> 제한속도 위반</label></p>
+                        <p><label><input type="checkbox" name="nb[]" value="04"> 04</label></p>
+                        <p><label><input type="checkbox" name="nb[]" value="05"> 05</label></p>
+                        <p><input type="submit" value="Submit"></p>       
+                    </div>
+                </li>
+                <li>
+                    <div class="title">
+                        <h5>뒷차에 해당하는 항목을 체크해주세요</h5>
+                    </div>
+                    <div class="check">
+                        <p><label><input type="checkbox" name="nb[]" value="01"> 과속</label></p>
+                        <p><label><input type="checkbox" name="nb[]" value="02"> 졸음운전</label></p>
+                        <p><label><input type="checkbox" name="nb[]" value="03"> 무면허운전</label></p>
+                        <p><label><input type="checkbox" name="nb[]" value="04"> 안전거리 미확보</label></p>
+                        <p><label><input type="checkbox" name="nb[]" value="05"> 제한속도 위반</label></p>
+                        <p><label><input type="checkbox" name="nb[]" value="03"> 급출발</label></p>
+                        <p><label><input type="checkbox" name="nb[]" value="04"> 04</label></p>
+                        <p><label><input type="checkbox" name="nb[]" value="05"> 05</label></p>
+                        <p><input type="submit" value="Submit"></p>       
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </body>
+</html>

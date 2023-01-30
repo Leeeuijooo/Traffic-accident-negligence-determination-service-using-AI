@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <!-- Bootstrap CSS -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+        crossorigin="anonymous">
+
+
+    <!-- jquery 사용하기 위해 -->
+    <script
+        src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- chart.js-->
+    <script
+        src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+
+</head>
+
+<body>
+    <div class="intro">
+        <div class="header">
+            <ul class="nav">
+                <li><a
+                        href="http://127.0.0.1:8000/">HOME</a>
+                </li>
+                <li><a
+                        href="http://127.0.0.1:8000/check">CHECK</a>
+                </li>
+                <li><a href="">RESULT</a>
+                </li>
+
+                <li><a
+                        href="http://127.0.0.1:8000/home">FACTOR</a>
+            </ul>
+        </div>
+    </div>
+
+    <div class="main_1">
+        <h1>예상 결과</h1>
+        <div>
+            <h1>
+                <hr
+                    style="border: solid 5px green; width: 100%;">
+            </h1>
+        </div>
+        <ul class="menu">
+            <li style="width:540px">
+                <div class="title" style="margin-top: 60px">
+                    <h4>당신의 과실비율을 예측한 결과</h4>
+
+                </div>
+                <div class="book" id="book"
+                    style="height: 450px">
+                    <div class="title" id="accnum">
+                    </div>
+
+
+
+                </div>
+            </li>
+            <li>
+                <div class="chartbox" id="chartbox">
+                    <canvas id="pie-chart">
+                    </canvas>
+
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+
+        Chart.defaults.font.size = 25;
+        var mycar = 30;
+        var accnum = 501
+        var wei = 0
+
+        $('#book').append('<div class="title" id="myfault">' + mycar + "입니다" + '</div>')
+        $('#accnum').append('<div class="title" id="accnum">' + "사건 번호 :" + accnum + '</div>')
+        $(function () {
+            $('#chartbox').append('<canvas id="pie-chart" height="420px" width="420px" "margin=auto"></canvas>')
+            anocar = 100 - myccar
+
+
+            new Chart(document.getElementById("pie-chart"), {
+                type: 'pie',
+                data: {
+                    labels: ["내 과실", "상대방 과실"],
+                    datasets: [{
+                        label: "비율(percent)",
+                        backgroundColor: ["#eb6b56", "#ffb400"],
+                        data: [mycar, anocar]
+                    }]
+                },
+
+            })
+
+
+        })
+    </script>
+
+</body>
+
+</html>
